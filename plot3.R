@@ -1,7 +1,7 @@
 library("ggplot2")
 
 create_plot <- function(data_list) {
-  g <- qplot(year, x, data = yt, facets = .~ type, geom="bar", stat = "identity")
+  g <- qplot(year, x, data = data_list, facets = .~ type, geom="bar", stat = "identity")
   g2 <- g + ggtitle("Emissions by type per year for Baltimore, MD") + ylab("Tons PM2.5") + xlab("Year")
   ggsave(filename="plot3.png", plot=g2)
 }
@@ -17,6 +17,7 @@ aggregateOnYear <- function(data_frame) {
 readData <- function() {
   NEI <- readRDS("exdata-data-NEI_data/summarySCC_PM25.rds")
   NEI$year <- as.factor(NEI$year)
+  NEI
 }
 
 runScript <- function() {
