@@ -1,7 +1,7 @@
 
 create_plot <- function(data_list) {
   png(filename="plot2.png", width=480, height=480)
-  barplot(byYear$x, main="Emissions By Year", names.arg=byYear$year, cex.names=0.8)
+  barplot(byYear$x, main="Emissions By Year for Baltimore, MD", names.arg=byYear$year, cex.names=0.8)
   dev.off()
 }
 
