@@ -30,3 +30,7 @@ readData <- function() {
   NEI$SCC <- as.factor(NEI$SCC)
   NEI
 }
+
+runScript <- function() {
+  create_plot(aggregateOnYear(reduceToBalMD(subsetToMotorVehicles(readData()))))
+}
