@@ -1,7 +1,8 @@
 
 create_plot <- function(data_list) {
   png(filename="plot2.png", width=480, height=480)
-  barplot(data_list$x, main="Emissions By Year for Baltimore, MD", names.arg=data_list$year, cex.names=0.8)
+  barplot(data_list$x, main="Emissions By Year for Baltimore, MD",
+          xlab="Year", ylab="Tons PM2.5", names.arg=data_list$year, cex.names=0.8)
   dev.off()
 }
 
@@ -19,6 +20,10 @@ readData <- function() {
   NEI
 }
 
+transormAndPlot <- function(data_frame) {
+  create_plot(aggregateOnYear(reduceToBalMD(data_frame)))
+}
+
 runScript <- function() {
-  create_plot(aggregateOnYear(reduceToBalMD(readData())))
+  transormAndPlot(readData())
 }
