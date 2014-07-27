@@ -20,6 +20,10 @@ readData <- function() {
   NEI
 }
 
+transormAndPlot <- function(data_frame) {
+  create_plot(aggregateOnYear(reduceToBalMD(data_frame)))
+}
+
 runScript <- function() {
-  create_plot(aggregateOnYear(reduceToBalMD(readData())))
+  transormAndPlot(readData())
 }

@@ -17,7 +17,7 @@ isCoal <- function(shortName) {
 subsetToCoal <- function(data_frame) {
   SCC <- readRDS("exdata-data-NEI_data/Source_Classification_Code.rds")
   coalCodes <- factor(subset(SCC, isCoal(Short.Name))$SCC)
-  subset(data_frame, SCC %in% f)
+  subset(data_frame, SCC %in% coalCodes)
 }
 
 readData <- function() {
@@ -27,6 +27,10 @@ readData <- function() {
   NEI
 }
 
+transormAndPlot <- function(data_frame) {
+  create_plot(aggregateOnYear(subsetToCoal(data_frame)))
+}
+
 runScript <- function() {
-  create_plot(aggregateOnYear(subsetToCoal(readData())))
+  transormAndPlot(readData())
 }
